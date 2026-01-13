@@ -1,0 +1,31 @@
+<h3>Add Task</h3>
+
+<form (ngSubmit)="submit()">
+  <input
+    type="text"
+    placeholder="Title"
+    [(ngModel)]="title"
+    name="title"
+    required
+  />
+
+  <br /><br />
+
+  <textarea
+    placeholder="Description"
+    [(ngModel)]="description"
+    name="description"
+  ></textarea>
+
+  <br /><br />
+
+  <select [(ngModel)]="status" name="status">
+    <option value="pending">Pending</option>
+    <option value="in_progress">In Progress</option>
+    <option value="done">Done</option>
+  </select>
+
+  <br /><br />
+
+  <button type="submit">Add Task</button>
+</form>

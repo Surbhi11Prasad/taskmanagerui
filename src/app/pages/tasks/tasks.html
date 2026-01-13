@@ -1,0 +1,47 @@
+<app-header></app-header>
+<div class="container">
+
+  <div class="card">
+    <h2>Create Task</h2>
+    <app-task-form></app-task-form>
+  </div>
+
+  <div class="card">
+    <h2>My Tasks</h2>
+
+    <div *ngFor="let task of tasks" class="card">
+      <h3>
+        {{ task.title }}
+        <span class="badge {{task.status}}">
+          {{ task.status }}
+        </span>
+      </h3>
+
+      <p>{{ task.description }}</p>
+
+      <button class="btn-secondary" (click)="edit(task)">Edit</button>
+      <button class="btn-danger" (click)="delete(task.id)">Delete</button>
+    </div>
+  </div>
+
+  <div *ngIf="editingTask" class="card">
+    <h2>Edit Task</h2>
+
+    <label>Title</label>
+    <input [(ngModel)]="editingTask.title" />
+
+    <label>Description</label>
+    <textarea [(ngModel)]="editingTask.description"></textarea>
+
+    <label>Status</label>
+    <select [(ngModel)]="editingTask.status">
+      <option value="pending">Pending</option>
+      <option value="in_progress">In Progress</option>
+      <option value="done">Done</option>
+    </select>
+
+    <br /><br />
+    <button class="btn-primary" (click)="save()">Save</button>
+  </div>
+
+</div>
